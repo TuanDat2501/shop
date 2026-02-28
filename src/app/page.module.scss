@@ -1,0 +1,22 @@
+.pageWrapper {
+  min-height: 100vh;
+  position: relative;
+}
+
+.contentLayout {
+  padding: 0 20px 80px 20px;
+  position: relative;
+  z-index: 10;
+  // Đẩy phần blog đè nhẹ lên Hero một chút tạo chiều sâu
+  margin-top: 20px; 
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}

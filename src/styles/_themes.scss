@@ -1,0 +1,61 @@
+/* --- HỆ THỐNG THEME 4 MÙA BEASTLORE --- */
+
+:root {
+  /* MÙA XUÂN - Thanh xuân trong veo */
+  --bg-color: #f2f7ff;
+  --hero-bg: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+  --accent-color: #8ab4f8; 
+  --highlight-color: #ff99cc; // "Ký Ức" hồng
+  --text-main: #333333;
+  --font-title: 'Quicksand', sans-serif;
+  --font-highlight: 'Pacifico', cursive;
+  --font-body: 'Verdana', sans-serif;
+  --effect-item: '🌸';
+  --border-style: dashed; //
+  --text-btn: #fff;
+}
+
+[data-theme='summer'] {
+  /* MÙA HẠ - Nắng vàng rực rỡ */
+  --bg-color: #fffdf0;
+  --hero-bg: linear-gradient(135deg, #fffdf0 0%, #fbe792 100%);
+  --accent-color: #c2db34e8;
+  --highlight-color: #f1c40f; // "Ký Ức" vàng nghệ
+  --text-main: #2c3e50;
+  --font-title: 'Quicksand', sans-serif;
+  --font-highlight: 'Pacifico', cursive;
+  --font-body: 'Verdana', sans-serif;
+  --effect-item: '✨';
+  --border-style: solid;
+  --text-btn: #2c3e50;
+}
+
+[data-theme='autumn'] {
+  /* MÙA THU - Hà Nội Xưa 1975 (Vibe nhám, thô) */
+  --bg-color: #dfd3c3;
+  --hero-bg: linear-gradient(135deg, #dfd3c3 0%, #c7b7a3 100%);
+  --accent-color: #2a2a28;
+  --highlight-color: #a43820; // "Ký Ức" đỏ gạch biển hiệu
+  --text-main: #2a2a28;
+  --font-title: 'Anton', sans-serif; // Font biển quảng cáo vẽ tay
+  --font-highlight: 'Pacifico', cursive;
+  --font-body: 'Courier Prime', monospace; // Font máy đánh chữ
+  --effect-item: '🍁';
+  --border-style: solid;
+  --text-btn: #fff;
+}
+
+[data-theme='winter'] {
+  /* MÙA ĐÔNG - Trầm mặc, se lạnh */
+  --bg-color: #f8f9fa;
+  --hero-bg: linear-gradient(135deg, #e6e9f0 0%, #eef1f5 100%);
+  --accent-color: #5d6d7e;
+  --highlight-color: #7baeb5; // "Ký Ức" xanh rêu lạnh
+  --text-main: #212529;
+  --font-title: 'Courier Prime', monospace;
+  --font-highlight: 'Pacifico', cursive;
+  --font-body: 'Verdana', sans-serif;
+  --effect-item: '❄️';
+  --border-style: dotted;
+  --text-btn: #fff;
+}

@@ -1,0 +1,64 @@
+.blogBanner {
+  background: var(--bg-panel);
+  border: 1px var(--border-style) #e2e8f0;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 60px;
+  box-shadow: 0 10px 30px rgba(138, 180, 248, 0.15);
+  position: relative;
+
+  .pin {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+  }
+
+  .title {
+    font-family: var(--font-nostalgia);
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .date {
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    border-bottom: 1px dotted var(--text-sub);
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .content {
+    font-family: var(--font-nostalgia);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-main);
+  }
+
+  .marqueeContainer {
+    margin-top: 25px;
+    background: #fff0f5; // Hồng nhạt kẹo ngọt
+    border: 1px dashed var(--highlight-color);
+    border-radius: 10px;
+    padding: 8px;
+    overflow: hidden;
+  }
+
+  .marqueeText {
+    white-space: nowrap;
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 15s linear infinite;
+    color: #d81b60;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}

@@ -1,0 +1,30 @@
+.widget {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  background: #ffffff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 2px solid var(--soft-pink);
+  box-shadow: 0 4px 15px rgba(255, 153, 204, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  z-index: 100;
+  animation: float 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--soft-pink);
+    color: #fff;
+  }
+}
+
+.icon { font-size: 16px; }
+.text { font-size: 12px; font-weight: 600; font-family: 'Quicksand', sans-serif; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}

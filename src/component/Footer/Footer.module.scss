@@ -1,0 +1,108 @@
+.footer {
+  margin-top: 80px;
+  padding: 60px 0 40px;
+  border-top: 2px dashed var(--accent-color);
+  background: linear-gradient(to bottom, transparent, rgba(138, 180, 248, 0.05));
+  text-align: center;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.streetLabel {
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  margin-bottom: 15px;
+  font-style: italic;
+  font-family: var(--font-nostalgia);
+}
+
+/* --- LOGIC BÉ MÈO VÀ BONG BÓNG --- */
+.catContainer {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  
+  .catEmoji {
+    font-size: 3rem;
+    position: relative;
+    
+    .winking {
+      display: none; // Mặc định ẩn mèo thức
+    }
+  }
+
+  .speechBubble {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #ffffff;
+    border: 2px solid var(--accent-color);
+    padding: 12px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    width: 240px;
+    color: var(--text-main);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // Hiệu ứng nảy (bounce)
+    z-index: 10;
+
+    // Mũi tên của bong bóng
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: var(--accent-color) transparent transparent transparent;
+    }
+
+    strong {
+      color: var(--highlight-color);
+    }
+  }
+
+  // Hiệu ứng khi Hover
+  &:hover {
+    .speechBubble {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .sleeping {
+      display: none; // Ẩn mèo ngủ
+    }
+
+    .winking {
+      display: inline-block; // Hiện mèo nháy mắt
+      animation: wink 1s infinite alternate;
+    }
+  }
+}
+
+.copyright {
+  margin-top: 30px;
+  font-family: var(--font-nostalgia);
+  font-size: 0.7rem;
+  color: var(--text-sub);
+  line-height: 1.8;
+
+  strong {
+    color: var(--accent-color);
+  }
+}
+
+// Keyframes cho bé mèo nháy mắt
+@keyframes wink {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
