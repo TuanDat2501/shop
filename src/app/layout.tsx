@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 import CursorTrail from '../component/CursorTrail/CursorTrail'
 import Footer from '../component/Footer/Footer'
 import MusicWidget from '../component/MusicWidget/MusicWidget'
 import Navbar from '../component/Navbar/Navbar'
 import PetalEffect from '../component/PetalEffect/PetalEffect'
 import RetroMarquee from '../component/RetroMarquee/RetroMarquee'
+=======
+>>>>>>> 658be2c77f2b92730513f7daecdc577a77b3981e
 import './globals.scss'
 import type { Metadata } from 'next'
 
