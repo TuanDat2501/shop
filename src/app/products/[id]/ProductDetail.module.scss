@@ -1,0 +1,261 @@
+.productPage {
+  padding: 60px 0;
+  min-height: 80vh;
+  position: relative;
+  z-index: 10;
+}
+
+.entryLayout {
+  display: flex;
+  gap: 60px;
+  /* Quan trọng: Phải dùng flex-start để cột phải có thể trượt (sticky) được */
+  align-items: flex-start; 
+  background: var(--bg-panel);
+  padding: 50px;
+  border-radius: 30px;
+  border: 1px var(--border-style) rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 900px) {
+    flex-direction: column-reverse; /* Mobile thì đẩy ảnh xuống dưới, chữ lên trên */
+    padding: 20px;
+  }
+}
+
+/* --- CỘT TRÁI: ALBUM ẢNH (CUỘN DỌC) --- */
+.albumColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Khoảng cách giữa các bức ảnh */
+  
+  // Tạo hiệu ứng các ảnh hơi dính vào nhau một chút cho lộn xộn
+  padding-bottom: 40px; 
+}
+
+/* CÁC GÓC NGHIÊNG POLAROID KHÁC NHAU */
+.rotateLeft { transform: rotate(-3deg); }
+.rotateRight { transform: rotate(2deg); }
+.rotateFarLeft { transform: rotate(-5deg); }
+
+.polaroidFrame {
+  background: #fff;
+  padding: 15px 15px 40px 15px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08); // Bóng đổ nhạt hoài cổ
+  border: 1px solid #eee;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  position: relative;
+  z-index: 1;
+
+  /* Hiệu ứng khi hover vào 1 bức ảnh: Nó sẽ bật thẳng lên và đè lên các ảnh khác */
+  &:hover {
+    transform: rotate(0deg) scale(1.05) !important;
+    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+  }
+
+  /* Miếng băng dính giả lập dán ở góc trên ảnh */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 80px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+    backdrop-filter: blur(2px);
+    z-index: 2;
+  }
+
+  .imagePlaceholder {
+    width: 100%;
+    height: 400px;
+    background: #f9f9f9;
+    border: 1px dashed var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+  }
+
+  .caption {
+    margin-top: 15px;
+    font-family: var(--font-highlight);
+    color: var(--text-sub);
+    font-size: 1.1rem;
+    text-align: center;
+  }
+}
+
+/* --- CỘT PHẢI: TÂM SỰ BÁM DÍNH (STICKY) --- */
+.infoColumn {
+  flex: 1.2;
+  position: sticky;
+  top: 120px; /* Cách mép trên màn hình 120px (nhường chỗ cho Navbar) */
+  align-self: flex-start; /* Bắt buộc để sticky hoạt động */
+}
+
+/* Các styles của text giữ nguyên... */
+.diaryHeader {
+  margin-bottom: 30px;
+  border-bottom: 2px var(--border-style) var(--accent-color);
+  padding-bottom: 15px;
+
+  .date {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .productName {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-top: 5px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+}
+
+.diaryContent {
+  font-family: var(--font-body);
+  color: var(--text-main);
+  line-height: 1.8;
+  font-size: 0.95rem;
+
+  p {
+    margin-bottom: 15px;
+    text-indent: 20px;
+  }
+
+  .specs {
+    list-style: none;
+    background: rgba(var(--accent-color-rgb), 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    border: 1px dotted var(--accent-color);
+
+    li {
+      margin-bottom: 10px;
+      font-size: 0.85rem;
+      display: flex;
+      gap: 10px;
+      &::before {
+        content: "♥";
+        color: var(--highlight-color);
+      }
+    }
+  }
+
+  .priceTag {
+    margin: 30px 0;
+    font-size: 1.1rem;
+    padding: 15px;
+    border-left: 4px solid var(--highlight-color);
+    background: #fff;
+
+    strong {
+      font-size: 1.8rem;
+      color: #e53e3e;
+      font-family: var(--font-title);
+      margin-left: 10px;
+    }
+  }
+
+  .buyBtn {
+    width: 100%;
+    background: var(--accent-color);
+    color: var(--bg-color); // Màu chữ đảo ngược lấy theo nền
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--text-main);
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+
+    &:hover {
+      background: var(--highlight-color);
+      transform: translateY(-2px);
+      box-shadow: 6px 6px 0px var(--text-main);
+    }
+
+    &:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--text-main);
+    }
+  }
+}
+/* --- KHU VỰC CHỌN SIZE --- */
+.sizeWrapper {
+  margin: 25px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.5); // Nền mờ lót dưới
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.sizeLabel {
+  font-family: var(--font-body);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 15px !important; // Ghi đè margin mặc định của thẻ p trong diaryContent
+  color: var(--text-main);
+  text-indent: 0 !important; // Bỏ thụt đầu dòng
+}
+
+.sizeGrid {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.sizeBtn {
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: 2px dashed var(--accent-color); // Viền đứt kiểu mác áo cắt dở
+  color: var(--accent-color);
+  font-family: var(--font-title); // Dùng font biển hiệu cho máu
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Hiệu ứng khi lướt chuột qua */
+  &:hover {
+    background: var(--bg-color); // Lấy màu giấy nền
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Hiệu ứng khi người dùng Click chọn Size này */
+.activeSize {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border-style: solid; // Chuyển từ viền đứt sang viền liền
+  box-shadow: 3px 3px 0px var(--text-main); // Hard shadow đậm chất retro
+  transform: translateY(-2px);
+
+  // Không bị mất hiệu ứng khi hover nếu đã active
+  &:hover {
+    background: var(--accent-color); 
+    box-shadow: 3px 3px 0px var(--text-main);
+  }
+}

@@ -1,0 +1,175 @@
+/* Khử định dạng mặc định của thẻ <Link> */
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  outline: none;
+  height: 100%;
+  &:hover {
+    .card {
+      transform: translateY(-5px);
+      border-color: var(--accent-color);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .name {
+      color: var(--highlight-color);
+    }
+  }
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px var(--border-style) rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  .imagePlaceholder {
+    height: 320px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--accent-color);
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+  }
+
+  .name {
+    font-family: var(--font-nostalgia);
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    transition: 0.2s;
+    flex-grow: 1;
+    line-height: 1.4;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px dotted rgba(0, 0, 0, 0.1);
+  }
+
+  .price {
+    color: #e53e3e; // Đỏ gạch chuẩn e-commerce
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+  }
+
+  .addBtn {
+    background: transparent;
+    border: 1px solid var(--highlight-color);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: var(--font-title);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: var(--highlight-color);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
+.badgeSticker {
+    position: absolute;
+    top: 10px;
+    right: -5px;
+    /* Cho thẻ hơi tràn ra ngoài viền một xíu cho nghệ */
+    z-index: 10;
+
+    /* Màu sắc lấy theo highlight của mùa */
+    background: var(--highlight-color);
+    color: #fff;
+
+    /* Thiết kế viền đứt đoạn như tem giấy */
+    padding: 5px 15px;
+    border: 1px dashed #fff;
+
+    /* Font chữ viết tay lãng mạn hoặc font biển hiệu */
+    font-family: var(--font-highlight);
+    font-size: 1.1rem;
+    font-weight: normal;
+    text-transform: capitalize;
+
+    /* Xoay nghiêng và đổ bóng cứng tạo cảm giác dán tay */
+    transform: rotate(12deg);
+    box-shadow: 3px 3px 0px var(--text-main);
+    transition: all 0.3s ease;
+
+    /* Hiệu ứng nảy lên khi hover vào thẻ Card */
+    .cardLink:hover & {
+      transform: rotate(5deg) scale(1.1);
+    }
+  }
+.badgeContainer {
+  position: absolute;
+  top: 10px;
+  right: -5px; // Giữ ở góc phải card
+  z-index: 10;
+  display: flex;
+  flex-direction: column; // Xếp dọc xuống
+  align-items: flex-end;  // Căn lề phải
+  gap: 12px; // Tăng khoảng cách để tránh xếp chồng
+  width: min-content; // Đảm bảo chiều rộng không bị giới hạn
+  pointer-events: none; // Sticker không chặn click vào card
+}
+
+.badgeSticker {
+  position: relative; // Đặt về relative để flexbox hoạt động
+  padding: 4px 12px;
+  border: 1px dashed #fff;
+  font-family: var(--font-highlight);
+  font-size: 1rem;
+  font-weight: normal;
+  text-transform: capitalize;
+  box-shadow: 2px 2px 0px var(--text-main);
+  transition: all 0.3s ease;
+  white-space: nowrap; // Không cho chữ rớt dòng
+  margin: 0; // Đảm bảo không có margin gây xếp chồng
+
+  /* Khi hover vào nguyên cái card, các sticker sẽ nảy lên */
+  .cardLink:hover & {
+    transform: scale(1.05) rotate(0deg) !important; // Xóa xoay khi hover
+  }
+}
+
+/* TẠO SỰ LỘN XỘN CÓ CHỦ ĐÍCH CHO CÁC STICKER */
+.stickerStyle0 {
+  background: var(--highlight-color);
+  color: #fff;
+  transform: rotate(12deg);
+}
+
+.stickerStyle1 {
+  background: var(--accent-color); // Dùng màu nhấn (Xanh/Đen) cho sticker thứ 2
+  color: var(--bg-color);
+  transform: rotate(-6deg);
+  border-style: dotted; // Đổi kiểu viền
+}
+
+.stickerStyle2 {
+  background: var(--text-main); // Màu mực đậm cho sticker thứ 3
+  color: var(--bg-color);
+  transform: rotate(5deg);
+  border: 1px solid rgba(255,255,255,0.5);
+}

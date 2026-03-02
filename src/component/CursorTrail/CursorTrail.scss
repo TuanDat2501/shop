@@ -1,0 +1,27 @@
+/* CSS cho hạt bụi sao rơi ra từ chuột */
+.magic-star {
+  position: fixed;
+  pointer-events: none; // Không cản trở việc click
+  background: var(--highlight-color);
+  /* Vẽ hình ngôi sao bằng clip-path */
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  opacity: 0.8;
+  z-index: 9999;
+  animation: fallAndFade 0.8s linear forwards;
+}
+
+@keyframes fallAndFade {
+  0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.8; }
+  100% { transform: translateY(30px) scale(0) rotate(90deg); opacity: 0; }
+}
+
+/* --- ĐỔI HÌNH DÁNG CON TRỎ CHUỘT TOÀN WEBSITE --- */
+body {
+  /* Chuột mũi tên retro viền đậm */
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="%23333" stroke-width="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/></svg>'), auto;
+}
+
+/* Đổi thành hình ngôi sao khi chỉ chuột vào Link hoặc Nút bấm */
+a, button, input, .cardLink {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="%23ff99cc" stroke="%23333" stroke-width="1.5"><path d="M12 2L15 9H22L16 14L18 21L12 17L6 21L8 14L2 9H9L12 2Z"/></svg>'), pointer !important;
+}

@@ -1,0 +1,97 @@
+.heroSection {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--hero-bg);
+  overflow: hidden;
+  border-bottom: 2px var(--border-style) #b8c7d9;
+
+  .heroContent {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+
+    .heroTag {
+      display: inline-block;
+      background:  var(--hero-bg);
+      color: var(--baby-blue);
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border: 1px dotted var(--baby-blue);
+    }
+  }
+
+}
+
+.heroTitle {
+  font-family: var(--font-title);
+  font-size: 5vw;
+  color: #2c3e50;
+  line-height: 1.1;
+  margin-bottom: 20px;
+
+  .heroHighlight {
+    /* Chữ "Ký Ức" tự đổi màu và hiệu ứng phát sáng theo mùa */
+    color: var(--highlight-color);
+    font-weight: bold;
+    font-family: var(--font-highlight);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: all 0.5s ease;
+  }
+}
+
+.floatingImg {
+  position: absolute;
+  background: #fff;
+  padding: 10px 10px 30px 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 12px;
+  border: 1px dashed #ddd;
+}
+
+.img1 {
+  width: 200px;
+  height: 250px;
+  left: 10%;
+  top: 20%;
+  transform: rotate(-10deg);
+}
+
+.img2 {
+  width: 180px;
+  height: 220px;
+  right: 12%;
+  bottom: 15%;
+  transform: rotate(15deg);
+}
+
+.heroBtn {
+  background: var(--accent-color);
+  color: var(--text-btn);
+  border: none;
+  padding: 12px 35px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}

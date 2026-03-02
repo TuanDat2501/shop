@@ -9,7 +9,7 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-
+/public/12 au.mp3
 # testing
 /coverage
 

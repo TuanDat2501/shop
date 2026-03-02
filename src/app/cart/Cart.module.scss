@@ -1,0 +1,358 @@
+.cartPage {
+  padding: 40px 0 80px;
+  min-height: 80vh;
+  position: relative;
+  z-index: 10;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+
+  .pin {
+    font-size: 24px;
+    margin-bottom: -5px;
+  }
+
+  .title {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    font-family: var(--font-highlight);
+    color: var(--highlight-color);
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+}
+
+/* --- TRẠNG THÁI TRỐNG --- */
+.emptyCart {
+  text-align: center;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px dashed var(--accent-color);
+  border-radius: 20px;
+
+  p {
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    color: var(--text-main);
+    margin-bottom: 20px;
+  }
+
+  .continueBtn {
+    display: inline-block;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-family: var(--font-title);
+    text-decoration: none;
+    box-shadow: 4px 4px 0px var(--text-main);
+    transition: 0.2s;
+
+    &:hover { transform: translateY(-2px); box-shadow: 6px 6px 0px var(--text-main); }
+  }
+}
+
+/* --- LAYOUT SỔ TAY (2 CỘT) --- */
+.scrapbookLayout {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+/* --- CỘT TRÁI: ẢNH DÁN --- */
+.leftItems {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.scrapbookItem {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.06);
+  position: relative;
+  transition: transform 0.3s ease;
+
+  /* Hiệu ứng miếng băng dính đục mờ */
+  .tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 100px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+    backdrop-filter: blur(3px);
+    z-index: 2;
+  }
+
+  &:hover {
+    transform: rotate(0deg) scale(1.02);
+    z-index: 10;
+  }
+}
+
+.tiltLeft { transform: rotate(-1deg); }
+.tiltRight { transform: rotate(1deg); }
+
+.itemContent {
+  display: flex;
+  gap: 25px;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
+}
+
+.itemImg {
+  width: 130px;
+  height: 160px;
+  background: #f8f9fa;
+  border: 1px dashed var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  font-family: var(--font-body);
+  flex-shrink: 0;
+}
+
+.itemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .itemName {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-bottom: 5px;
+    display: inline-block;
+
+    &:hover { color: var(--highlight-color); }
+  }
+
+  .itemDesc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-bottom: 15px;
+  }
+
+  .itemPrice {
+    font-family: var(--font-title);
+    color: #e53e3e;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dotted rgba(0,0,0,0.1);
+  padding-top: 15px;
+}
+
+.quantityCtrl {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  button {
+    background: var(--bg-panel);
+    border: 1px solid var(--text-main);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px var(--text-main);
+    transition: 0.2s;
+
+    &:hover { background: var(--accent-color); color: #fff; box-shadow: none; transform: translate(2px,2px); }
+  }
+
+  span {
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+  }
+}
+
+.removeBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-sub);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover { color: #e53e3e; }
+}
+
+/* --- CỘT PHẢI: TRANG VỞ Ô LY --- */
+.rightSlip {
+  flex: 1;
+  position: sticky;
+  top: 100px;
+}
+
+.notebookPage {
+  background-color: #fdfcf0; /* Màu giấy ố vàng */
+  border-radius: 5px;
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.05);
+  border: 1px solid #e0dcd3;
+  position: relative;
+  overflow: hidden;
+  
+  /* TẠO LƯỚI Ô LY XANH NHẠT */
+  background-image: 
+    linear-gradient(rgba(138, 180, 248, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(138, 180, 248, 0.2) 1px, transparent 1px);
+  background-size: 25px 25px; /* Kích thước ô ly */
+
+  /* ĐƯỜNG KẺ LỀ MÀU ĐỎ */
+  /* &::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 45px;
+    width: 2px;
+    background: rgba(229, 62, 62, 0.4);
+  } */
+}
+
+.notebookContent {
+  padding: 40px 30px 40px 65px; /* Đẩy nội dung ra sau đường lề đỏ */
+  position: relative;
+  z-index: 1;
+}
+
+.slipTitle {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: var(--text-main);
+  margin-bottom: 5px;
+}
+
+.dateText {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.calcList {
+  list-style: none;
+  margin-bottom: 30px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    position: relative;
+
+    .dot {
+      position: absolute;
+      left: -15px;
+      color: var(--accent-color);
+    }
+
+    .label {
+      flex: 1;
+      padding-right: 15px;
+      border-bottom: 1px dotted rgba(0,0,0,0.2); /* Dòng kẻ chấm nối chữ và số */
+      line-height: 1.2;
+    }
+
+    .value {
+      font-weight: bold;
+    }
+  }
+
+  .shippingRow {
+    margin-top: 20px;
+    color: var(--text-sub);
+  }
+}
+
+.totalSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px dashed var(--accent-color);
+
+  span {
+    font-family: var(--font-highlight); // Chữ sến
+    font-size: 1.5rem;
+    color: var(--text-main);
+  }
+
+  .totalValue {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: #e53e3e;
+  }
+}
+
+.signature {
+  margin-top: 40px;
+  text-align: right;
+  font-family: var(--font-highlight);
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  transform: rotate(-3deg);
+}
+
+.checkoutBtn {
+  width: 100%;
+  margin-top: 30px;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  padding: 15px;
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px var(--text-main);
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0px var(--highlight-color);
+    background: var(--highlight-color);
+  }
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--highlight-color);
+  }
+}

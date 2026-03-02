@@ -1,0 +1,401 @@
+.shopPage {
+  min-height: 80vh;
+  position: relative;
+  z-index: 10;
+  padding-bottom: 80px;
+}
+
+/* --- HERO SECTION HOÀI NIỆM MỚI --- */
+.shopHero {
+  width: 100%;
+  height: 60vh; /* Chiều cao Hero hơi thấp hơn Trang chủ một xíu */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+  /* Màu nền Gradient tự đổi theo mùa */
+  background: var(--hero-bg); 
+  
+  overflow: hidden;
+  border-bottom: 2px var(--border-style) rgba(0,0,0,0.1);
+  transition: all 0.8s ease-in-out;
+  margin-bottom: -30px; // Kéo phần filter lên đè một chút
+
+  /* Lớp phủ Noise Texture cho đỡ "điện tử" */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.05;
+    pointer-events: none;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)"/></svg>');
+  }
+}
+
+.heroContent {
+  text-align: center;
+  z-index: 2;
+  padding: 0 20px;
+}
+
+.tag {
+  display: inline-block;
+  background: #fff;
+  color: var(--accent-color);
+  padding: 5px 15px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 1px dotted var(--accent-color);
+}
+
+.title {
+  /* Font title thay đổi theo mùa (Anton thô hoặc Quicksand tròn) */
+  font-family: var(--font-title);
+  font-size: 5vw;
+  color: var(--text-main);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  .highlight {
+    /* Chữ "Ngăn Tủ" tự đổi màu và hiệu ứng phát sáng sến theo mùa */
+    font-family: var(--font-highlight); // Font Pacifico viết tay sến
+    color: var(--highlight-color);
+    text-transform: none;
+    font-size: 1.1em;
+    display: inline-block;
+    transform: rotate(-3deg) translateY(10px);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 2px 2px 0px rgba(0,0,0,0.05);
+    transition: all 0.5s ease;
+  }
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-main);
+  max-width: 500px;
+  margin: 40px auto 0;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* HÌNH ẢNH TRÔI NỔI (POLAROID) */
+.floatingImages {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; // Chặn click để không cản trở hover
+}
+
+.polaroid {
+  position: absolute;
+  background: #fff;
+  padding: 10px 10px 30px 10px;
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.05); // Hard shadow hoài cổ
+  border: 1px solid #eee;
+  display: flex; align-items: center; justify-content: center;
+  color: #aaa; font-size: 12px; border: 1px dashed #ddd;
+  z-index: 1;
+}
+/* Vị trí và góc nghiêng của 3 ảnh Hero trang Shop */
+.heroImg1 { width: 180px; height: 230px; left: 8%; top: 15%; transform: rotate(-8deg); }
+.heroImg2 { width: 160px; height: 200px; right: 10%; top: 10%; transform: rotate(10deg); }
+.heroImg3 { width: 150px; height: 180px; left: 20%; bottom: 10%; transform: rotate(5deg); }
+.heroImg4 { width: 140px; height: 170px; right: 20%; bottom: 15%; transform: rotate(-10deg); }
+
+/* --- NỘI DUNG CHÍNH (CONTAINER) --- */
+.contentLayout {
+  position: relative;
+  z-index: 10;
+}
+
+/* --- KHU VỰC BỘ LỌC (FILTER TABS) giữ nguyên --- */
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 50px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 40px;
+  border: 1px var(--border-style) rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+}
+
+.filterBtn {
+  background: transparent;
+  border: 2px dashed var(--accent-color);
+  color: var(--accent-color);
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    background: rgba(var(--bg-color-rgb, 255,255,255), 0.5);
+  }
+}
+
+.activeFilter {
+  background: var(--accent-color) !important;
+  color: var(--bg-color) !important;
+  border-style: solid;
+  box-shadow: 3px 3px 0px var(--text-main);
+  transform: translateY(-2px);
+}
+
+/* --- LƯỚI SẢN PHẨM giữ nguyên --- */
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px;
+  font-family: var(--font-body);
+  color: var(--text-sub);
+  font-size: 1.2rem;
+  border: 2px dashed rgba(0,0,0,0.1);
+  border-radius: 20px;
+}
+
+/* ... (Giữ nguyên phần CSS của .shopPage, .shopHero, .floatingImages) ... */
+
+/* --- LAYOUT 2 CỘT MỚI --- */
+.shopLayout {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start; /* Quan trọng để sidebar trượt (sticky) được */
+  position: relative;
+  z-index: 10;
+  margin-top: -30px; // Kéo toàn bộ content đè lên Hero một xíu
+  @media (max-width: 900px) {
+    flex-direction: column; // Điện thoại thì sidebar rớt xuống trên cùng
+  }
+}
+
+/* --- CỘT TRÁI: SIDEBAR (CUỐN SỔ BỘ LỌC) --- */
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px; /* Cố định khi cuộn, nhường 100px cho Navbar */
+  
+  @media (max-width: 900px) {
+    width: 100%;
+    position: relative;
+    top: 0;
+  }
+}
+
+.filterNotebook {
+  background: var(--bg-panel, rgba(255, 255, 255, 0.8));
+  padding: 30px 25px;
+  border-radius: 20px;
+  border: 1px var(--border-style) var(--accent-color);
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.05); // Hard shadow kiểu cổ
+  position: relative;
+
+  /* Giả lập đường kẻ lề đỏ của vở ô ly */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 30px;
+    height: 100%; width: 2px;
+    background: rgba(229, 62, 62, 0.3);
+    z-index: 0;
+  }
+}
+
+.filterTitle {
+  font-family: var(--font-title);
+  color: var(--accent-color);
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  background: var(--bg-color); // Xóa đường kẻ đỏ chạy ngang chữ
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.filterGroup {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px dashed rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1;
+    left: 20px;
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.groupTitle {
+  font-family: var(--font-body);
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 15px;
+}
+
+/* CUSTOM RADIO BUTTONS (Dạng ô tick sến) */
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.customRadio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-main);
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px; // Nhường chỗ cho ô check
+  user-select: none;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 50%; left: 0;
+    transform: translateY(-50%);
+    height: 16px; width: 16px;
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+  }
+
+  &:hover input ~ .checkmark {
+    background-color: rgba(var(--accent-color-rgb), 0.1);
+  }
+
+  /* Khi được check, hiện cục màu lấp đầy */
+  input:checked ~ .checkmark {
+    background-color: var(--highlight-color);
+    border-color: var(--highlight-color);
+  }
+
+  /* Tạo dấu tick nhỏ xíu ở trong */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  input:checked ~ .checkmark:after {
+    display: block;
+    left: 4px; top: 1px;
+    width: 4px; height: 8px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+}
+
+/* LỌC SIZE DẠNG NÚT BẤM (Kế thừa từ trang Chi tiết) */
+.sizeGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sizeBtn {
+  background: transparent;
+  border: 1px dashed var(--accent-color);
+  color: var(--text-main);
+  padding: 5px 12px;
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background: var(--bg-color);
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+  }
+}
+
+.activeSize {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border-style: solid;
+  box-shadow: 2px 2px 0px var(--text-main);
+}
+
+/* --- CỘT PHẢI: LƯỚI SẢN PHẨM --- */
+.mainContent {
+  flex: 1;
+}
+
+.productCount {
+  font-family: var(--font-body);
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted rgba(0,0,0,0.1);
+
+  strong { color: var(--accent-color); font-size: 1.1rem; }
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px;
+  border: 2px dashed var(--accent-color);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.5);
+
+  p {
+    font-family: var(--font-body);
+    color: var(--text-sub);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  button {
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-family: var(--font-title);
+    cursor: pointer;
+    box-shadow: 2px 2px 0px var(--text-main);
+    transition: 0.2s;
+
+    &:hover { transform: translate(2px, 2px); box-shadow: none; }
+  }
+}

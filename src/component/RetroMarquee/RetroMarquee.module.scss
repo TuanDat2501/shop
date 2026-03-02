@@ -1,0 +1,30 @@
+.marqueeContainer {
+  width: 100%;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  padding: 6px 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 99; // Nằm dưới Navbar một chút
+  border-bottom: 2px dashed var(--bg-color);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  display: flex;
+}
+
+.marqueeText {
+  display: flex;
+  animation: scrollLeft 25s linear infinite;
+
+  span {
+    padding-right: 50px; // Khoảng cách giữa 2 đoạn lặp
+  }
+}
+
+/* Hiệu ứng chạy chữ vô tận */
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

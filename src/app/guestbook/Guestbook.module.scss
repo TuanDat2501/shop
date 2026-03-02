@@ -1,0 +1,128 @@
+.guestbookPage {
+  padding: 40px 0 80px;
+  min-height: 80vh;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 40px;
+
+  .title {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--accent-color);
+  }
+  .subtitle {
+    font-family: var(--font-highlight);
+    color: var(--highlight-color);
+    font-size: 1.2rem;
+  }
+}
+
+/* KHUNG VIẾT LƯU BÚT */
+.writeSection {
+  max-width: 600px;
+  margin: 0 auto 50px;
+  background: var(--bg-panel, rgba(255,255,255,0.7));
+  padding: 25px;
+  border-radius: 20px;
+  border: 2px dashed var(--accent-color);
+  box-shadow: 5px 5px 0px rgba(0,0,0,0.05);
+}
+
+.noteForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  input, textarea {
+    background: transparent;
+    border: 1px dotted var(--text-sub);
+    padding: 12px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-main);
+    outline: none;
+    border-radius: 10px;
+    transition: 0.2s;
+
+    &:focus { border-color: var(--accent-color); background: #fff; }
+  }
+}
+
+.submitBtn {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px var(--text-main);
+  transition: 0.2s;
+  &:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--text-main); }
+  &:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--text-main); }
+}
+
+/* BỨC TƯỜNG (CORKBOARD) */
+.corkBoard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.stickyNote {
+  padding: 25px 20px 20px;
+  position: relative;
+  box-shadow: 3px 5px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, z-index 0s;
+
+  &:hover {
+    transform: scale(1.1) rotate(0deg) !important;
+    z-index: 10;
+    box-shadow: 8px 10px 20px rgba(0,0,0,0.15);
+  }
+
+  .pin {
+    position: absolute;
+    top: 8px; left: 50%;
+    transform: translateX(-50%);
+    width: 12px; height: 12px;
+    background: #e53e3e;
+    border-radius: 50%;
+    box-shadow: inset -2px -2px 4px rgba(0,0,0,0.5), 1px 1px 2px rgba(0,0,0,0.2);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px; left: 2px;
+      width: 4px; height: 4px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
+    }
+  }
+
+  .noteText {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #222;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+  }
+
+  .noteAuthor {
+    font-family: var(--font-highlight);
+    font-size: 1.1rem;
+    color: #444;
+    text-align: right;
+  }
+}
+
+/* Các màu giấy note */
+.pink { background: #ffcce6; }
+.yellow { background: #fff59d; }
+.blue { background: #b3e5fc; }
+.green { background: #c8e6c9; }
