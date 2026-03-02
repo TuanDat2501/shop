@@ -13,6 +13,7 @@ export default function ProductGrid() {
     e.preventDefault();
     alert("Đã bỏ vào giỏ sản phẩm " + productId + " nha!");
   }
+  
   return (
     <div className={styles.grid}>
       {HOME_PRODUCTS.map((item) => (

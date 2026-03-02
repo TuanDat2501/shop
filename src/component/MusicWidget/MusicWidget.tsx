@@ -3,11 +3,7 @@ import { useState, useRef } from 'react';
 import styles from './MusicWidget.module.scss';
 
 export default function MusicWidget() {
-<<<<<<< HEAD
   const [isPlaying, setIsPlaying] = useState(true);
-=======
-  const [isPlaying, setIsPlaying] = useState(false);
->>>>>>> 658be2c77f2b92730513f7daecdc577a77b3981e
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const toggleMusic = () => {
